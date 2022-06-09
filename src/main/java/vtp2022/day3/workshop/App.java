@@ -16,6 +16,9 @@ public class App
                 App.defaultDb = args[0];
             }
         System.out.println( defaultDb );
+        Repository repo = new Repository(defaultDb);
+        Session session = new Session(repo);
+        session.start();
 
     }
 }

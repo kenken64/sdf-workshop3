@@ -60,20 +60,24 @@ public class Session {
                     break;
 
                 case LOAD:
-                    //currCart = reps
-                    // TODO 
+                    currCart = repository.load(currCart.getUsername());
+                    System.out.printf("Loaded %s shoppong cart. There are %s item(s)\n",
+                        currCart.getUsername(), currCart.getContents().size());
                     break;
 
                 case SAVE:
-                    // TODO
+                    repository.save(currCart);
+                    System.out.println("Done !");
                     break;
 
                 case LOGIN:
                     currCart = new Cart(terms[1]);
+                    System.out.printf("%s login OK", terms[1]);
                     break;
                 
                 case USERS:
-                    //TODO repo need to have the getAllUsers method.
+                    List<String> allCarts = repository.getShoppingCarts();
+                    this.printList(allCarts);
                     break;
 
                 case END:
